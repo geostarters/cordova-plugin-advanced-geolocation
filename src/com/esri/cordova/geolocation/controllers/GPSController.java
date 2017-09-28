@@ -247,6 +247,8 @@ public final class GPSController implements Runnable {
             @Override
             public void onNmeaReceived(long timestamp, String nmea) {
                 Log.d(TAG, "GPS status NMEA changed: "+nmea);
+                sendCallback(PluginResult.Status.OK, JSONHelper.satelliteNmeaDataJSON(nmea);
+
             }
         };
 

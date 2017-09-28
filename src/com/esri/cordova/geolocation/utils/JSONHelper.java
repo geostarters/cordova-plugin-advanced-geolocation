@@ -53,6 +53,7 @@ import java.util.List;
 public final class JSONHelper {
 
     public static final String SATELLITE_PROVIDER = "satellite";
+    public static final String NMEA_SATELLITE_PROVIDER = "satellite_nmea";
     public static final String CELLINFO_PROVIDER = "cell_info";
     public static final String CELLLOCATION_PROVIDER = "cell_location";
     private static final String SIGNAL_STRENGTH = "signal_strength";
@@ -492,6 +493,23 @@ public final class JSONHelper {
                     count++;
                 }
             }
+        }
+        catch (JSONException exc){
+            logJSONException(exc);
+        }
+
+        return json.toString();
+    }
+
+    public static String satelliteNmeaDataJSON(String nmea){
+
+        final Calendar calendar = Calendar.getInstance();
+        final JSONObject json = new JSONObject();
+
+        try {
+            json.put("provider", NMEA_SATELLITE_PROVIDER);
+            json.put("timestamp", calendar.getTimeInMillis());
+            json.put("nmea", nmea);
         }
         catch (JSONException exc){
             logJSONException(exc);
