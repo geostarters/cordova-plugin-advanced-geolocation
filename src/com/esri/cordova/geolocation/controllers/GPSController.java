@@ -239,6 +239,15 @@ public final class GPSController implements Runnable {
             }
         };
 
+        _nmeaMessageListener = new onNmeaMessageListener() {
+
+            @Override
+            public void onNmeaMessage (String message, long timestamp) {
+                Log.d(TAG, "onNmeaMessage: " + message);
+            }
+
+        };
+
         final InitStatus status = new InitStatus();
 
         final Boolean gpsProviderEnabled = _locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
@@ -246,6 +255,7 @@ public final class GPSController implements Runnable {
         if(gpsProviderEnabled){
             try{
                 _locationManager.addGpsStatusListener(_gpsStatusListener);
+                _locationManager.addNmeaListener(_nmeaMessageListener);
             }
             // if the ACCESS_FINE_LOCATION permission is not present
             catch(SecurityException exc){
