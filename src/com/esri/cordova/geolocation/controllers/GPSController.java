@@ -43,7 +43,8 @@ public final class GPSController implements Runnable {
     private static LocationManager _locationManager = null;
     private static LocationListener _locationListenerGPSProvider = null;
     private static GpsStatus.Listener _gpsStatusListener = null;
-    private static onNmeaMessageListener _nmeaMessageListener = null;
+    private static GpsStatus.NmeaListener _gpsStatusNmeaListener = null;
+    //private static onNmeaMessageListener _nmeaMessageListener = null;
 
     private static CallbackContext _callbackContext; // Threadsafe
     private static CordovaInterface _cordova;
@@ -234,21 +235,29 @@ public final class GPSController implements Runnable {
                 if(!Thread.currentThread().isInterrupted() &&
                         (event == GpsStatus.GPS_EVENT_FIRST_FIX ||
                                 event == GpsStatus.GPS_EVENT_SATELLITE_STATUS) &&
-                                        _locationManager != null){
+                        _locationManager != null){
                     sendCallback(PluginResult.Status.OK,
                             JSONHelper.satelliteDataJSON(_locationManager.getGpsStatus(null)));
                 }
             }
         };
 
-        _nmeaMessageListener = new onNmeaMessageListener() {
+        _gpsStatusNmeaListener = new GpsStatus.NmeaListener() {
 
+            @Override
+            public void onNmeaReceived(long timestamp, String nmea) {
+                Log.d(TAG, "GPS status NMEA changed: "+nmea);
+            }
+        };
+
+        /*
+        _nmeaMessageListener = new onNmeaMessageListener() {
             @Override
             public void onNmeaMessage (String message, long timestamp) {
                 Log.d(TAG, "onNmeaMessage: " + message);
             }
-
         };
+        */
 
         final InitStatus status = new InitStatus();
 
