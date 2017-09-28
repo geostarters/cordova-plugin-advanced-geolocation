@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e698e2f5-5f36-47a0-a529-c6800c035197" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/esri/cordova/geolocation/controllers/GPSController.java" afterPath="$PROJECT_DIR$/src/com/esri/cordova/geolocation/controllers/GPSController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/esri/cordova/geolocation/utils/JSONHelper.java" afterPath="$PROJECT_DIR$/src/com/esri/cordova/geolocation/utils/JSONHelper.java" />
     </list>
     <ignored path="cordova-plugin-advanced-geolocation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +28,8 @@
       <file leaf-file-name="GPSController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/esri/cordova/geolocation/controllers/GPSController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="248" column="61" selection-start-line="248" selection-start-column="61" selection-end-line="248" selection-end-column="61" />
+            <state relative-caret-position="470">
+              <caret line="249" column="92" selection-start-line="249" selection-start-column="92" selection-end-line="249" selection-end-column="92" />
               <folding>
                 <element signature="e#0#605#0" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -531,8 +530,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/esri/cordova/geolocation/controllers/GPSController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="248" column="61" selection-start-line="248" selection-start-column="61" selection-end-line="248" selection-end-column="61" />
+        <state relative-caret-position="470">
+          <caret line="249" column="92" selection-start-line="249" selection-start-column="92" selection-end-line="249" selection-end-column="92" />
           <folding>
             <element signature="e#0#605#0" expanded="true" />
             <element signature="imports" expanded="true" />
