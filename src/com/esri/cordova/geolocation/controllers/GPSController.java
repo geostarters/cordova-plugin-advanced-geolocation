@@ -266,7 +266,7 @@ public final class GPSController implements Runnable {
         if(gpsProviderEnabled){
             try{
                 _locationManager.addGpsStatusListener(_gpsStatusListener);
-                _locationManager.addNmeaListener(_nmeaMessageListener);
+                _locationManager.addNmeaListener(_gpsStatusNmeaListener);
             }
             // if the ACCESS_FINE_LOCATION permission is not present
             catch(SecurityException exc){
