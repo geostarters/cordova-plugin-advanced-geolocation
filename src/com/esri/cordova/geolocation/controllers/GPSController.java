@@ -19,6 +19,7 @@ package com.esri.cordova.geolocation.controllers;
 
 import android.content.Context;
 import android.location.GpsStatus;
+import android.location.OnNmeaMessageListener;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -42,6 +43,7 @@ public final class GPSController implements Runnable {
     private static LocationManager _locationManager = null;
     private static LocationListener _locationListenerGPSProvider = null;
     private static GpsStatus.Listener _gpsStatusListener = null;
+    private static onNmeaMessageListener _nmeaMessageListener = null;
 
     private static CallbackContext _callbackContext; // Threadsafe
     private static CordovaInterface _cordova;
