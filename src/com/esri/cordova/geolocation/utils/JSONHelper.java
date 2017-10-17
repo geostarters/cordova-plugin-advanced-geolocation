@@ -40,6 +40,11 @@ import android.util.Log;
 import com.esri.cordova.geolocation.model.Error;
 import com.esri.cordova.geolocation.model.StopLocation;
 
+import net.sf.marineapi.nmea.parser.DataNotAvailableException;
+import net.sf.marineapi.nmea.parser.SentenceFactory;
+import net.sf.marineapi.nmea.sentence.GGASentence;
+import net.sf.marineapi.nmea.sentence.GSASentence;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -506,10 +511,37 @@ public final class JSONHelper {
         final Calendar calendar = Calendar.getInstance();
         final JSONObject json = new JSONObject();
 
+
         try {
             json.put("provider", NMEA_SATELLITE_PROVIDER);
             json.put("timestamp", calendar.getTimeInMillis());
             json.put("nmea", nmea);
+
+            SentenceParser g = new SentenceParser(nmea);
+            json.put("NMEA_ID", g.getSentenceId());
+
+            if(g.getSentenceId().equals("GGA"){
+
+                SentenceFactory sf = SentenceFactory.getInstance();
+                GGASentence gga = (GGASentence) sf.createParser(nmea);
+
+                String GGA = "KO";
+                String GPSQA = "empty";
+                if(gga.isValid()){
+                    GGA = "OK";
+                    try {
+                        GPSQA = gga.getFixQuality();
+
+                    }catch(DataNotAvailableException e){
+                        logJSONException("HDOP not available");
+                    }
+                }else {
+                    logJSONException("GSA invalid");
+                }
+                json.put("GGA", GGA);
+                json.put("GPSQA", GPSQA);
+            }
+
         }
         catch (JSONException exc){
             logJSONException(exc);
