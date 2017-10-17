@@ -1,0 +1,3 @@
+dependencies {
+    provided files('lib/marineapi-0.10.0.jar')
+}
