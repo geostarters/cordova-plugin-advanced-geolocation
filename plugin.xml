@@ -43,7 +43,7 @@
         <asset src="sample/green-pin.png" target="img/green-pin.png" />
 
         <!-- libs -->
-        <source-file src="libs/marineapi-0.10.0.jar" target-dir="libs/" />
+        <source-file src="src/libs/marineapi-0.10.0.jar" target-dir="src/libs/" />
 
         <!-- Copy over the Java source files -->
         <source-file src="src/com/esri/cordova/geolocation/AdvancedGeolocation.java" target-dir="src/com/esri/cordova/geolocation" />
