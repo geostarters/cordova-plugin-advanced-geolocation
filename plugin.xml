@@ -42,9 +42,8 @@
         <asset src="sample/blue-pin.png" target="img/blue-pin.png" />
         <asset src="sample/green-pin.png" target="img/green-pin.png" />
 
-        <!-- libs -->
-        <source-file src="src/libs/marineapi-0.10.0.jar" target-dir="src/libs/" />
 
+        <framework src="src/com/esri/cordova/geolocation/extras.gradle" custom="true" type="gradleReference" />
         <!-- Copy over the Java source files -->
         <source-file src="src/com/esri/cordova/geolocation/AdvancedGeolocation.java" target-dir="src/com/esri/cordova/geolocation" />
 
@@ -69,6 +68,9 @@
         <source-file src="src/com/esri/cordova/geolocation/utils/JSONHelper.java" target-dir="src/com/esri/cordova/geolocation/utils" />
         <source-file src="src/com/esri/cordova/geolocation/utils/ErrorMessages.java" target-dir="src/com/esri/cordova/geolocation/utils" />
         <source-file src="src/com/esri/cordova/geolocation/utils/GeodataHelper.java" target-dir="src/com/esri/cordova/geolocation/utils" />
+
+        <!-- libs -->
+        <source-file src="src/com/esri/cordova/geolocation/marineapi-0.10.0.jar" target-dir="lib" />
 
         <js-module src="www/AdvancedGeolocation.js" name="AdvancedGeolocation">
             <clobbers target="AdvancedGeolocation" />
