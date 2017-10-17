@@ -520,7 +520,7 @@ public final class JSONHelper {
             SentenceParser g = new SentenceParser(nmea);
             json.put("NMEA_ID", g.getSentenceId());
 
-            if(g.getSentenceId().equals("GGA"){
+            if(g.getSentenceId().equals("GGA")){
 
                 SentenceFactory sf = SentenceFactory.getInstance();
                 GGASentence gga = (GGASentence) sf.createParser(nmea);
