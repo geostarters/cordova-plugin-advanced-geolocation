@@ -89,7 +89,7 @@
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Time.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/TimeSentence.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Units.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
-        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Waypoints.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Waypoint.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
 
         <!-- libs -->
         <source-file src="src/com/esri/cordova/geolocation/marineapi-0.10.0.jar" target-dir="lib" />
