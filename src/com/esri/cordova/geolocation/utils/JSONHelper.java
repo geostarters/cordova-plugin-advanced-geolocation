@@ -516,7 +516,7 @@ public final class JSONHelper {
             json.put("timestamp", calendar.getTimeInMillis());
             json.put("nmea", nmea);
 
-            SentenceParser g = new SentenceParser(nmea);
+/*            SentenceParser g = new SentenceParser(nmea);
             json.put("NMEA_ID", g.getSentenceId());
 
             if(g.getSentenceId().equals("GGA")){
@@ -541,7 +541,7 @@ public final class JSONHelper {
                 }
                 json.put("GGA", GGA);
                 json.put("GPSQA", GPSQA);
-            }
+            }*/
 
         }
         catch (JSONException exc){
