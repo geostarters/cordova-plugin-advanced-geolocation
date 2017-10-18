@@ -528,11 +528,12 @@ public final class JSONHelper {
                 SentenceFactory sf = SentenceFactory.getInstance();
                 GGASentence gga = (GGASentence) sf.createParser(nmea);
 
+                /*
                 try {
                     json.put("gps_fq", gga.getFixQuality().toString());
                 }catch(DataNotAvailableException e){
                     Log.d(TAG, "GPS fix qua not available");
-                }
+                }*/
 
                 try {
                     json.put("hdop", gga.getHorizontalDOP());
@@ -540,12 +541,13 @@ public final class JSONHelper {
                     Log.d(TAG, "HDOP not available");
                 }   
                 
+                /*
                 try {
                     json.put("nmea_lat", gga.getPosition().getLatitude());
                     json.put("nmea_lon", gga.getPosition().getLongitude());
                 }catch(DataNotAvailableException e){
                     Log.d(TAG, "Position not available");
-                }                 
+                }*/                 
 
             }else{
                 json.put("nmeaid", "other");
