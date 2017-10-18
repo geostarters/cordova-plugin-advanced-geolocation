@@ -532,10 +532,12 @@ public final class JSONHelper {
                         GPSQA = gga.getFixQuality();
 
                     }catch(DataNotAvailableException e){
-                        logJSONException("HDOP not available");
+                        //logJSONException("HDOP not available");
+                        Log.d(TAG, "HDOP not available");
                     }
                 }else {
-                    logJSONException("GSA invalid");
+                    //logJSONException("GSA invalid");
+                    Log.d(TAG, "GSA Exception");
                 }
                 json.put("GGA", GGA);
                 json.put("GPSQA", GPSQA);
