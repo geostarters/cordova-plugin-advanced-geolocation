@@ -529,7 +529,7 @@ public final class JSONHelper {
                 if(gga.isValid()){
                     GGA = "OK";
                     try {
-                        GPSQA = gga.getFixQuality();
+                        GPSQA = gga.getFixQuality().toString();
 
                     }catch(DataNotAvailableException e){
                         //logJSONException("HDOP not available");
