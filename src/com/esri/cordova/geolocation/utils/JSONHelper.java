@@ -40,7 +40,10 @@ import android.util.Log;
 import com.esri.cordova.geolocation.model.Error;
 import com.esri.cordova.geolocation.model.StopLocation;
 
-import com.esri.cordova.geolocation.utils.nmea.*;
+import com.esri.cordova.geolocation.utils.nmea.DataNotAvailableException;
+import com.esri.cordova.geolocation.utils.nmea.SentenceFactory;
+import com.esri.cordova.geolocation.utils.nmea.SentenceParser;
+import com.esri.cordova.geolocation.utils.nmea.GGASentence;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -516,8 +519,15 @@ public final class JSONHelper {
             json.put("timestamp", calendar.getTimeInMillis());
             json.put("nmea", nmea);
 
-            SentenceParser g = new SentenceParser(nmea);
-            json.put("NMEA_ID", g.getSentenceId());
+            //SentenceParser g = new SentenceParser(nmea);
+            //json.put("NMEA_ID", g.getSentenceId());
+
+            if(nmea.startsWith("$GPGGA")){
+                json.put("nmeaid", "gga");
+            }else{
+                json.put("nmeaid", "other");
+            }
+
 /*
             if(g.getSentenceId().equals("GGA")){
 
