@@ -40,10 +40,7 @@ import android.util.Log;
 import com.esri.cordova.geolocation.model.Error;
 import com.esri.cordova.geolocation.model.StopLocation;
 
-import net.sf.marineapi.nmea.parser.DataNotAvailableException;
-import net.sf.marineapi.nmea.parser.SentenceFactory;
-import net.sf.marineapi.nmea.sentence.GGASentence;
-import net.sf.marineapi.nmea.sentence.GSASentence;
+import com.esri.cordova.geolocation.utils.nmea.*;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +48,8 @@ import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.List;
+
+
 
 /**
  * Threadsafe class for converting location data into JSON

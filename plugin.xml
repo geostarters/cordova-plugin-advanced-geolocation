@@ -69,6 +69,28 @@
         <source-file src="src/com/esri/cordova/geolocation/utils/ErrorMessages.java" target-dir="src/com/esri/cordova/geolocation/utils" />
         <source-file src="src/com/esri/cordova/geolocation/utils/GeodataHelper.java" target-dir="src/com/esri/cordova/geolocation/utils" />
 
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Checksum.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/CompassPoint.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/DataNotAvailableException.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Datum.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/GGAParser.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/GGASentence.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/GPSFixQuality.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/ParseException.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Position.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/PositionParser.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/PositionSentence.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Sentence.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/SentenceFactory.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/SentenceId.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/SentenceParser.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/SentenceValidator.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/TalkerId.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Time.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/TimeSentence.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Units.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Waypoints.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+
         <!-- libs -->
         <source-file src="src/com/esri/cordova/geolocation/marineapi-0.10.0.jar" target-dir="lib" />
 
