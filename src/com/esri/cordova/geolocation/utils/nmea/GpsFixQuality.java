@@ -29,35 +29,40 @@ package com.esri.cordova.geolocation.utils.nmea;
  * @see GpsFixStatus
  * @see DataStatus
  */
-public enum GpsFixQuality {
+public class GpsFixQuality {
 
 	/** No GPS fix acquired. */
-	INVALID(0),
+//	INVALID(0),
+	public static final int INVALID = 0;
 
 	/** Normal GPS fix, Standard Position Service (SPS). */
-	NORMAL(1),
+//	NORMAL(1),
+	public static final int NORMAL = 1;
 
 	/** Differential GPS fix. */
-	DGPS(2),
-
+//	DGPS(2),
+	public static final int DGPS = 2;
 	/** Precise Positioning Service fix. */
-	PPS(3),
-
+//	PPS(3),
+	public static final int PPS = 3;
 	/** Real Time Kinematic */
-	RTK(4),
-
+//	RTK(4),
+	public static final int RTK = 4;
 	/** Float RTK */
-	FRTK(5),
-
+//	FRTK(5),
+	public static final int FRTK = 5;
 	/** Estimated, dead reckoning (2.3 feature) */
-	ESTIMATED(6),
-
+//	ESTIMATED(6),
+	public static final int ESTIMATED = 6;
 	/** Manual input mode */
-	MANUAL(7),
-
+//	MANUAL(7),
+	public static final int MANUAL = 7;
 	/** Simulation mode */
-	SIMULATED(8);
-
+//	SIMULATED(8);
+	public static final int SIMULATED = 8;
+	
+	//public static final String[] = ["INVALID", "NORMAL"];
+	
 	private final int value;
 
 	GpsFixQuality(int intValue) {
@@ -80,12 +85,28 @@ public enum GpsFixQuality {
 	 * @param val Status identifier value
 	 * @return GpsFixQuality enum
 	 */
-	public static GpsFixQuality valueOf(int val) {
-		for (GpsFixQuality gfq : values()) {
-			if (gfq.toInt() == val) {
-				return gfq;
-			}
+	public static String valueOf(int val) {
+//		for (GpsFixQuality gfq : values()) {
+//			if (gfq.toInt() == val) {
+//				return gfq;
+//			}
+//		}
+//		return valueOf(String.valueOf(val));
+		
+		switch(val){
+		case 0: return "INVALID";
+		case 1: return "NORMAL";
+		case 2: return "DGPS";
+		case 3: return "PPS";
+		case 4: return "RTK";
+		case 5: return "FRTK";
+		case 6: return "ESTIMATED";
+		case 7: return "MANUAL";
+		case 8: return "SIMULATED";
+		default: return "INVALID";
 		}
-		return valueOf(String.valueOf(val));
+		
 	}
 }
+
+
