@@ -75,7 +75,7 @@
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Datum.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/GGAParser.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/GGASentence.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
-        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/GPSFixQuality.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
+        <source-file src="src/com/esri/cordova/geolocation/utils/nmea/GpsFixQuality.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/ParseException.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/Position.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
         <source-file src="src/com/esri/cordova/geolocation/utils/nmea/PositionParser.java" target-dir="src/com/esri/cordova/geolocation/utils/nmea" />
