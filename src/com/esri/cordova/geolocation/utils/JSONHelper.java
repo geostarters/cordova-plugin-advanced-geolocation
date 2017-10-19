@@ -530,22 +530,22 @@ public final class JSONHelper {
 
                 /*
                 try {
-                    json.put("gps_fq", gga.getFixQuality().toString());
+                    json.put("gpsfq", gga.getFixQuality().toString());
                 }catch(DataNotAvailableException e){
-                    Log.d(TAG, "GPS fix qua not available");
+                    json.put("gpsfq", "GPS fix qua not available");
                 }*/
 
-                /*    
+                  
                 try {
-                    json.put("hdop", gga.getHorizontalDOP());
+                    json.put("hdop", Double.toString(gga.getHorizontalDOP()));
                 }catch(DataNotAvailableException e){
-                    Log.d(TAG, "HDOP not available");
-                }*/   
+                     json.put("hdop", "HDOP not available");
+                }   
                 
                 /*
                 try {
-                    json.put("nmea_lat", gga.getPosition().getLatitude());
-                    json.put("nmea_lon", gga.getPosition().getLongitude());
+                    json.put("nmea_lat", Double.toString(gga.getPosition().getLatitude()));
+                    json.put("nmea_lon", Double.toString(gga.getPosition().getLongitude()));
                 }catch(DataNotAvailableException e){
                     Log.d(TAG, "Position not available");
                 }*/                 
