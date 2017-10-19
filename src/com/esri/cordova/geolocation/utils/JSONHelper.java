@@ -525,30 +525,36 @@ public final class JSONHelper {
             if(nmea.startsWith("$GPGGA")){
                 json.put("nmeaid", "gga");
 
-                SentenceFactory sf = SentenceFactory.getInstance();
-                GGASentence gga = (GGASentence) sf.createParser("$GPGGA,123519,4807.038,N,01131.000,E,1,08,0.9,545.4,M,46.9,M,,*47");
+                try{
 
-                /*
-                try {
-                    json.put("gpsfq", gga.getFixQuality().toString());
-                }catch(DataNotAvailableException e){
-                    json.put("gpsfq", "GPS fix qua not available");
-                }*/
-
-                  
-                try {
-                    json.put("hdop", Double.toString(gga.getHorizontalDOP()));
-                }catch(DataNotAvailableException e){
-                     json.put("hdop", "HDOP not available");
-                }   
+                    SentenceFactory sf = SentenceFactory.getInstance();
+                    GGASentence gga = (GGASentence) sf.createParser(nmea);
+    
+                    
+                    try {
+                        json.put("gpsfq", gga.getFixQuality().toString());
+                    }catch(DataNotAvailableException e){
+                        json.put("gpsfq", "GPS fix qua not available");
+                    }
+    
+                      /*
+                    try {
+                        json.put("hdop", Double.toString(gga.getHorizontalDOP()));
+                    }catch(DataNotAvailableException e){
+                         json.put("hdop", "HDOP not available");
+                    }  */ 
+                    
+                    /*
+                    try {
+                        json.put("nmea_lat", Double.toString(gga.getPosition().getLatitude()));
+                        json.put("nmea_lon", Double.toString(gga.getPosition().getLongitude()));
+                    }catch(DataNotAvailableException e){
+                        Log.d(TAG, "Position not available");
+                    }*/ 
+                }catch(Exception e){
+                    json.put("nmeavalid", "INVALID");
+                }
                 
-                /*
-                try {
-                    json.put("nmea_lat", Double.toString(gga.getPosition().getLatitude()));
-                    json.put("nmea_lon", Double.toString(gga.getPosition().getLongitude()));
-                }catch(DataNotAvailableException e){
-                    Log.d(TAG, "Position not available");
-                }*/                 
 
             }else{
                 json.put("nmeaid", "other");
