@@ -535,11 +535,12 @@ public final class JSONHelper {
                     Log.d(TAG, "GPS fix qua not available");
                 }*/
 
+                /*    
                 try {
                     json.put("hdop", gga.getHorizontalDOP());
                 }catch(DataNotAvailableException e){
                     Log.d(TAG, "HDOP not available");
-                }   
+                }*/   
                 
                 /*
                 try {
