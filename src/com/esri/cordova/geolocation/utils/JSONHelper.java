@@ -549,9 +549,12 @@ public final class JSONHelper {
                     try {
                         json.put("nmea_lat", Double.toString(gga.getPosition().getLatitude()));
                         json.put("nmea_lon", Double.toString(gga.getPosition().getLongitude()));
+                        json.put("nmea_altitude", Double.toString(gga.getPosition().getAltitude()));
+                        
                     }catch(DataNotAvailableException e){
                         json.put("nmea_lat", "0.0");
                         json.put("nmea_lon", "0.0");
+                        json.put("nmea_altitude", "0.0");
                     } 
                 }catch(Exception e){
                     json.put("nmeavalid", "INVALID");
