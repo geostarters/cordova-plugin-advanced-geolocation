@@ -519,9 +519,6 @@ public final class JSONHelper {
             json.put("timestamp", calendar.getTimeInMillis());
             json.put("nmea", nmea);
 
-            //SentenceParser g = new SentenceParser(nmea);
-            //json.put("NMEA_ID", g.getSentenceId());
-
             if(nmea.startsWith("$GPGGA")){
                 json.put("nmeaid", "gga");
 
@@ -565,32 +562,6 @@ public final class JSONHelper {
             }else{
                 json.put("nmeaid", "other");
             }
-
-/*
-            if(g.getSentenceId().equals("GGA")){
-
-                SentenceFactory sf = SentenceFactory.getInstance();
-                GGASentence gga = (GGASentence) sf.createParser(nmea);
-
-                String GGA = "KO";
-                String GPSQA = "empty";
-                if(gga.isValid()){
-                    GGA = "OK";
-                    try {
-                        GPSQA = gga.getFixQuality().toString();
-
-                    }catch(DataNotAvailableException e){
-                        //logJSONException("HDOP not available");
-                        Log.d(TAG, "HDOP not available");
-                    }
-                }else {
-                    //logJSONException("GSA invalid");
-                    Log.d(TAG, "GSA Exception");
-                }
-                json.put("GGA", GGA);
-                json.put("GPSQA", GPSQA);
-            }*/
-
         }
         catch (JSONException exc){
             logJSONException(exc);
