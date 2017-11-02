@@ -201,7 +201,7 @@ public final class GPSController implements Runnable {
                 }                
             }
 
-            if(!gpsListener.success || !satelliteListener.success){
+/*             if(!gpsListener.success || !satelliteListener.success){
                 if(gpsListener.exception == null){
                     // Handle custom error messages
                     sendCallback(PluginResult.Status.ERROR,
@@ -236,7 +236,7 @@ public final class GPSController implements Runnable {
                         sendCallback(PluginResult.Status.OK, parsedLocation);
                     }
                 }
-            }
+            } */
         }
         else {
             Log.e(TAG, "Not starting GPSController due to thread interrupt.");
