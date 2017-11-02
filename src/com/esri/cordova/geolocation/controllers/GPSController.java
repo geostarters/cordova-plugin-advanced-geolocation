@@ -115,15 +115,23 @@ public final class GPSController implements Runnable {
                 _locationDataBuffer = new LocationDataBuffer(_bufferSize);
             }
 
-            final InitStatus gpsListener = setLocationListenerGPSProvider();
-            InitStatus satelliteListener = new InitStatus();
+            //final InitStatus gpsListener = setLocationListenerGPSProvider();
+            //InitStatus satelliteListener = new InitStatus();
+            boolean gpsListenerSuccess = true;
+            boolean satelliteListenerSuccess = true;
 
             if(_returnSatelliteData){
                 Log.w(TAG, "GPSController setGPSStatusListener...");
+                InitStatus satelliteListener = new InitStatus();
                satelliteListener = setGPSStatusListener();
+               satelliteListenerSuccess = satelliteListener.success;
+            }else{
+                final InitStatus gpsListener = setLocationListenerGPSProvider();
+                gpsListenerSuccess = gpsListener.success;
             }
 
-            if(!gpsListener.success || !satelliteListener.success){
+            if(!gpsListenerSuccess || !satelliteListenerSuccess){
+            //if(!gpsListener.success || !satelliteListener.success){
                 if(gpsListener.exception == null){
                     // Handle custom error messages
                     sendCallback(PluginResult.Status.ERROR,
