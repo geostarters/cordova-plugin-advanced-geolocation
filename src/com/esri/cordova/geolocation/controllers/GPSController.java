@@ -94,6 +94,8 @@ public final class GPSController implements Runnable {
 
     public void startLocation(){
 
+        Log.w(TAG, "GPSController startLocation...");
+
         if(!Thread.currentThread().isInterrupted()){
             Log.i(TAG,"Available location providers: " + _locationManager.getAllProviders().toString());
 
@@ -117,6 +119,7 @@ public final class GPSController implements Runnable {
             InitStatus satelliteListener = new InitStatus();
 
             if(_returnSatelliteData){
+                Log.w(TAG, "GPSController setGPSStatusListener...");
                satelliteListener = setGPSStatusListener();
             }
 
@@ -229,7 +232,7 @@ public final class GPSController implements Runnable {
 
             @Override
             public void onGpsStatusChanged(int event) {
-                Log.d(TAG, "GPS status changed.");
+                Log.w(TAG, "GPS status changed.");
 
                 // Ignore if GPS_EVENT_STARTED or GPS_EVENT_STOPPED
                 if(!Thread.currentThread().isInterrupted() &&
@@ -246,7 +249,7 @@ public final class GPSController implements Runnable {
 
             @Override
             public void onNmeaReceived(long timestamp, String nmea) {
-                Log.d(TAG, "GPS status NMEA changed: "+nmea);
+                Log.w(TAG, "GPS status NMEA changed: "+nmea);
                 sendCallback(PluginResult.Status.OK, JSONHelper.satelliteNmeaDataJSON(nmea));
 
             }
