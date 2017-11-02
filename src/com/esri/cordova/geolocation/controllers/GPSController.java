@@ -117,21 +117,91 @@ public final class GPSController implements Runnable {
 
             //final InitStatus gpsListener = setLocationListenerGPSProvider();
             //InitStatus satelliteListener = new InitStatus();
-            boolean gpsListenerSuccess = true;
-            boolean satelliteListenerSuccess = true;
 
             if(_returnSatelliteData){
                 Log.w(TAG, "GPSController setGPSStatusListener...");
                 InitStatus satelliteListener = new InitStatus();
                satelliteListener = setGPSStatusListener();
-               satelliteListenerSuccess = satelliteListener.success;
+
+                if(!satelliteListener.success){
+                    if(satelliteListener.exception == null){
+                        // Handle custom error messages
+                        sendCallback(PluginResult.Status.ERROR,
+                                JSONHelper.errorJSON(LocationManager.GPS_PROVIDER, satelliteListener.error));
+                    }
+                    else {
+                        // Handle system exceptions
+                        sendCallback(PluginResult.Status.ERROR,
+                                JSONHelper.errorJSON(LocationManager.GPS_PROVIDER, satelliteListener.exception));
+                    }
+                }
+                else {
+                    // Return cache immediate if requested, otherwise wait for a location provider
+                    if(_returnCache){
+
+                        Location location = null;
+
+                        try {
+                            location = _locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        }
+                        catch(SecurityException exc){
+                            Log.e(TAG, exc.getMessage());
+                        }
+
+                        final String parsedLocation;
+
+                        // If the provider is disabled or currently unavailable then null is returned
+                        // Some devices will return null if the GPS is still warming up and hasn't gotten
+                        // a full signal lock yet.
+                        if(location != null) {
+                            parsedLocation = JSONHelper.locationJSON(LocationManager.GPS_PROVIDER, location, true);
+                            sendCallback(PluginResult.Status.OK, parsedLocation);
+                        }
+                    }
+                }
+
             }else{
                 final InitStatus gpsListener = setLocationListenerGPSProvider();
-                gpsListenerSuccess = gpsListener.success;
+
+                if(!gpsListener.success){
+                    if(gpsListener.exception == null){
+                        // Handle custom error messages
+                        sendCallback(PluginResult.Status.ERROR,
+                                JSONHelper.errorJSON(LocationManager.GPS_PROVIDER, gpsListener.error));
+                    }
+                    else {
+                        // Handle system exceptions
+                        sendCallback(PluginResult.Status.ERROR,
+                                JSONHelper.errorJSON(LocationManager.GPS_PROVIDER, gpsListener.exception));
+                    }
+                }
+                else {
+                    // Return cache immediate if requested, otherwise wait for a location provider
+                    if(_returnCache){
+    
+                        Location location = null;
+    
+                        try {
+                            location = _locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        }
+                        catch(SecurityException exc){
+                            Log.e(TAG, exc.getMessage());
+                        }
+    
+                        final String parsedLocation;
+    
+                        // If the provider is disabled or currently unavailable then null is returned
+                        // Some devices will return null if the GPS is still warming up and hasn't gotten
+                        // a full signal lock yet.
+                        if(location != null) {
+                            parsedLocation = JSONHelper.locationJSON(LocationManager.GPS_PROVIDER, location, true);
+                            sendCallback(PluginResult.Status.OK, parsedLocation);
+                        }
+                    }
+                }                
             }
 
-            if(!gpsListenerSuccess || !satelliteListenerSuccess){
-            //if(!gpsListener.success || !satelliteListener.success){
+            if(!gpsListener.success || !satelliteListener.success){
                 if(gpsListener.exception == null){
                     // Handle custom error messages
                     sendCallback(PluginResult.Status.ERROR,
