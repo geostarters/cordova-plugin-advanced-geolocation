@@ -94,8 +94,6 @@ public final class GPSController implements Runnable {
 
     public void startLocation(){
 
-        Log.w(TAG, "GPSController startLocation...");
-
         if(!Thread.currentThread().isInterrupted()){
             Log.i(TAG,"Available location providers: " + _locationManager.getAllProviders().toString());
 
@@ -115,93 +113,14 @@ public final class GPSController implements Runnable {
                 _locationDataBuffer = new LocationDataBuffer(_bufferSize);
             }
 
-            //final InitStatus gpsListener = setLocationListenerGPSProvider();
-            //InitStatus satelliteListener = new InitStatus();
+            final InitStatus gpsListener = setLocationListenerGPSProvider();
+            InitStatus satelliteListener = new InitStatus();
 
             if(_returnSatelliteData){
-                Log.w(TAG, "GPSController setGPSStatusListener...");
-                InitStatus satelliteListener = new InitStatus();
                satelliteListener = setGPSStatusListener();
-
-                if(!satelliteListener.success){
-                    if(satelliteListener.exception == null){
-                        // Handle custom error messages
-                        sendCallback(PluginResult.Status.ERROR,
-                                JSONHelper.errorJSON(LocationManager.GPS_PROVIDER, satelliteListener.error));
-                    }
-                    else {
-                        // Handle system exceptions
-                        sendCallback(PluginResult.Status.ERROR,
-                                JSONHelper.errorJSON(LocationManager.GPS_PROVIDER, satelliteListener.exception));
-                    }
-                }
-                else {
-                    // Return cache immediate if requested, otherwise wait for a location provider
-                    if(_returnCache){
-
-                        Location location = null;
-
-                        try {
-                            location = _locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                        }
-                        catch(SecurityException exc){
-                            Log.e(TAG, exc.getMessage());
-                        }
-
-                        final String parsedLocation;
-
-                        // If the provider is disabled or currently unavailable then null is returned
-                        // Some devices will return null if the GPS is still warming up and hasn't gotten
-                        // a full signal lock yet.
-                        if(location != null) {
-                            parsedLocation = JSONHelper.locationJSON(LocationManager.GPS_PROVIDER, location, true);
-                            sendCallback(PluginResult.Status.OK, parsedLocation);
-                        }
-                    }
-                }
-
-            }else{
-                final InitStatus gpsListener = setLocationListenerGPSProvider();
-
-                if(!gpsListener.success){
-                    if(gpsListener.exception == null){
-                        // Handle custom error messages
-                        sendCallback(PluginResult.Status.ERROR,
-                                JSONHelper.errorJSON(LocationManager.GPS_PROVIDER, gpsListener.error));
-                    }
-                    else {
-                        // Handle system exceptions
-                        sendCallback(PluginResult.Status.ERROR,
-                                JSONHelper.errorJSON(LocationManager.GPS_PROVIDER, gpsListener.exception));
-                    }
-                }
-                else {
-                    // Return cache immediate if requested, otherwise wait for a location provider
-                    if(_returnCache){
-    
-                        Location location = null;
-    
-                        try {
-                            location = _locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                        }
-                        catch(SecurityException exc){
-                            Log.e(TAG, exc.getMessage());
-                        }
-    
-                        final String parsedLocation;
-    
-                        // If the provider is disabled or currently unavailable then null is returned
-                        // Some devices will return null if the GPS is still warming up and hasn't gotten
-                        // a full signal lock yet.
-                        if(location != null) {
-                            parsedLocation = JSONHelper.locationJSON(LocationManager.GPS_PROVIDER, location, true);
-                            sendCallback(PluginResult.Status.OK, parsedLocation);
-                        }
-                    }
-                }                
             }
 
-/*             if(!gpsListener.success || !satelliteListener.success){
+            if(!gpsListener.success || !satelliteListener.success){
                 if(gpsListener.exception == null){
                     // Handle custom error messages
                     sendCallback(PluginResult.Status.ERROR,
@@ -236,7 +155,7 @@ public final class GPSController implements Runnable {
                         sendCallback(PluginResult.Status.OK, parsedLocation);
                     }
                 }
-            } */
+            }
         }
         else {
             Log.e(TAG, "Not starting GPSController due to thread interrupt.");
@@ -310,7 +229,7 @@ public final class GPSController implements Runnable {
 
             @Override
             public void onGpsStatusChanged(int event) {
-                Log.w(TAG, "GPS status changed.");
+                Log.d(TAG, "GPS status changed.");
 
                 // Ignore if GPS_EVENT_STARTED or GPS_EVENT_STOPPED
                 if(!Thread.currentThread().isInterrupted() &&
@@ -327,7 +246,7 @@ public final class GPSController implements Runnable {
 
             @Override
             public void onNmeaReceived(long timestamp, String nmea) {
-                Log.w(TAG, "GPS status NMEA changed: "+nmea);
+                Log.d(TAG, "GPS status NMEA changed: "+nmea);
                 sendCallback(PluginResult.Status.OK, JSONHelper.satelliteNmeaDataJSON(nmea));
 
             }

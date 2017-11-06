@@ -228,17 +228,13 @@ public class AdvancedGeolocation extends CordovaPlugin{
             final boolean gpsEnabled = _locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
             final boolean networkEnabled = isInternetConnected(_cordovaActivity.getApplicationContext());
 
-            Log.w(TAG, "networkLocationEnabled: "+networkLocationEnabled);
-            Log.w(TAG, "gpsEnabled: "+gpsEnabled);
-            Log.w(TAG, "networkEnabled: "+networkEnabled);
-
             // If warnings are disabled then skip initializing alert dialog fragments
-/*             if(!_noWarn && (!networkLocationEnabled || !gpsEnabled || !networkEnabled)){
+            if(!_noWarn && (!networkLocationEnabled || !gpsEnabled || !networkEnabled)){
                 alertDialog(gpsEnabled, networkLocationEnabled, networkEnabled);
             }
-            else { */
+            else {
                 startLocation();
-            //}
+            }
         }
     }
 
@@ -246,7 +242,7 @@ public class AdvancedGeolocation extends CordovaPlugin{
 
         // Misc. note: If you see the message "Attempted to send a second callback for ID:" then you need
         // to make sure to set pluginResult.setKeepCallback(true);
-        Log.w(TAG, "startLocation.........");
+
         // We want to prevent multiple instances of controllers from running!
         if(_gpsController != null || _networkLocationController != null || _cellLocationController != null){
             stopLocation();
@@ -285,9 +281,6 @@ public class AdvancedGeolocation extends CordovaPlugin{
 
         }
         if(_providers.equalsIgnoreCase(PROVIDERS_GPS)){
-
-            Log.w(TAG, "PROVIDERS_GPS");
-
             _gpsController = new GPSController(
                     _cordova, _callbackContext, _minDistance, _minTime, _useCache, _returnSatelliteData, _buffer, _bufferSize);
             _gpsFuture = threadPool.submit(_gpsController);
