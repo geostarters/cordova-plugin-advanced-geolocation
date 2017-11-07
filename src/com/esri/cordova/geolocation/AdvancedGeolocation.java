@@ -229,12 +229,13 @@ public class AdvancedGeolocation extends CordovaPlugin{
             final boolean networkEnabled = isInternetConnected(_cordovaActivity.getApplicationContext());
 
             // If warnings are disabled then skip initializing alert dialog fragments
-            if(!_noWarn && (!networkLocationEnabled || !gpsEnabled || !networkEnabled)){
+/*             if(!_noWarn && (!networkLocationEnabled || !gpsEnabled || !networkEnabled)){
                 alertDialog(gpsEnabled, networkLocationEnabled, networkEnabled);
             }
             else {
                 startLocation();
-            }
+            } */
+            startLocation();
         }
     }
 
