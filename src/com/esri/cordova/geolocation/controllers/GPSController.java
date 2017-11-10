@@ -43,6 +43,7 @@ public final class GPSController implements Runnable {
     private static LocationManager _locationManager = null;
     private static LocationListener _locationListenerGPSProvider = null;
     private static GpsStatus.Listener _gpsStatusListener = null;
+    
     private static GpsStatus.NmeaListener _gpsStatusNmeaListener = null;
     //private static onNmeaMessageListener _nmeaMessageListener = null;
 
